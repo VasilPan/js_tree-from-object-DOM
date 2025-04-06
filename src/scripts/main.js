@@ -28,32 +28,17 @@ const tree = document.querySelector('#tree');
 function createTree(element, data) {
   const ul = document.createElement('ul');
 
-  element.append(ul);п
+  element.append(ul);
 
   for (const key in data) {
-    const values = data[key];
+    const li = document.createElement('li');
 
-    if (Object.keys(values).length !== 0) {
-      createTree(element, values);
-    } else {
-      const li = document.createElement('li');
+    li.innerHTML = key;
+    ul.append(li);
 
-      li.innerHTML = key;
-      ul.append(li);
+    if (Object.keys(data[key]).length > 0) {
+      createTree(li, data[key]);
     }
   }
 }
 createTree(tree, food);
-
-// if(data) {
-//   createTree(element, data);
-// } else {
-//   const ul = document.createElement('ul')
-//   document.body.prepend(ul);
-
-//   for (let key in data) {
-//     const li = document.createElement('li');
-//     li.innerHTML = key;
-//     wrapper.append(li)
-//   }
-// }
